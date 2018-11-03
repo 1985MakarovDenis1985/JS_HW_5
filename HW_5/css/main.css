@@ -1,0 +1,13 @@
+.catalog .catalog-item{
+    cursor: pointer;
+}
+.catalog .catalog-item img{
+    clip-path: polygon(0% 0%, 0% 43%, 0% 53%, 0% 100%, 45% 100%, 55% 100%,100% 100%, 100% 53%, 100% 43%, 100% 0%, 55% 0%, 45% 0%);
+    -webkit-clip-path: polygon(0% 0%, 0% 43%, 0% 53%, 0% 100%, 45% 100%, 55% 100%,100% 100%, 100% 53%, 100% 43%, 100% 0%, 55% 0%, 45% 0%);
+    transition: clip-path 0.55s;
+    transition: -webkit-clip-path 0.55s;
+}
+.catalog .catalog-item:hover img{
+    clip-path: polygon(40% 40%, 15% 40%, 15% 60%, 40% 60%, 40% 90%, 55% 90%,55% 60%, 85% 60%, 85% 40%, 55% 40%, 55% 11%, 40% 11%);
+    -webkit-clip-path: polygon(40% 40%, 15% 40%, 15% 60%, 40% 60%, 40% 90%, 55% 90%,55% 60%, 85% 60%, 85% 40%, 55% 40%, 55% 11%, 40% 11%));
+}
