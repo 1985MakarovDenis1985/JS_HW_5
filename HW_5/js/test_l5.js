@@ -16,6 +16,8 @@ var products = [
   {"name":"snikers #8", "price":"425.22", "image":"bg-08.jpg", "discription":"This is a cool snikers"},
 ];
 
+
+
 function creatNewEl(tag, innerContent=null, nameClass=null, attr=null) {
   var el =  document.createElement(tag);
   el.innerHTML = (innerContent)?innerContent:"";
@@ -33,38 +35,36 @@ function creatCard(product) {
   var title = creatNewEl("h5", product.name, "card-title", null);
   var priceItem = creatNewEl("h3", "$ " + product.price, "card-price", null);
 
-
   var cardBody = creatFamily(creatNewEl("div", null, "card-body", null), [title, p, priceItem, link]);
 
   var cardImage = creatNewEl("img", null, "card-img-top", [{"name":"src", "value":"img/"+product.image}, {"name":"alt", "value":"img"}]);
 
-  var card = creatNewEl("div", null, "card");
-  card.appendChild(cardImage);
-  card.appendChild(cardBody);
+  var card = creatFamily(creatNewEl("div", null, "card"), [cardImage, cardBody]);
 
-  var catalogItem = creatNewEl("div", null, "col-lg-3 col-md-6 mb-2 catalog-item");
-  catalogItem.appendChild(card);
-
+  var catalogItem = creatFamily(creatNewEl("div", null, "col-lg-3 col-md-6 mb-2 catalog-item"), [card]);
   return catalogItem;
 };
+
 function creatFamily(html, array_el) {
   array_el.map((el)=>html.appendChild(el));
   return html;
-}
+};
 
 var catalog = document.getElementById("catalog");
 products.map((el)=>catalog.appendChild(creatCard(el)));
 
+var slideItem = ["previous",1,2,3,4,5,"next"];
+var paginationBox = creatNewEl("div", null, "container", null);
+var paginationNav = creatNewEl("nav", null, "justify-content-center", [{"name":"aria-label", "value":"Page navigation example"}]);
+var ul = creatNewEl("ul", null, "pagination", null);
 
+for (var i = 0; i < slideItem.length; i++) {
+  var a = creatNewEl("a", slideItem[i], "page-link", [{"name":"href", "value":"#"}]);
+  var li = creatNewEl("li", null, "page-item", null);
 
-// <div class="col-lg-3 col-md-6 mb-2 catalog-item">
-//   <div class="card">
-//     <img class="card-img-top" src="img/bg-01.jpg" alt="Card image cap">
-//     <div class="card-body">
-//       <h5 class="card-title">Card title</h5>
-//       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-//       <a href="#" class="btn btn-primary">Go somewhere</a>
-//     </div>
-//   </div>
-// </div>
-//
+  li.appendChild(a);
+  ul.appendChild(li);
+}
+paginationNav.appendChild(ul)
+paginationBox.appendChild(paginationNav);
+document.body.appendChild(paginationBox);
