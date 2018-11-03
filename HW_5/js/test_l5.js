@@ -56,7 +56,7 @@ products.map((el)=>catalog.appendChild(creatCard(el)));
 var slideItem = ["previous",1,2,3,4,5,"next"];
 var paginationBox = creatNewEl("div", null, "container", null);
 var paginationNav = creatNewEl("nav", null, "justify-content-center", [{"name":"aria-label", "value":"Page navigation example"}]);
-var ul = creatNewEl("ul", null, "pagination", null);
+var ul = creatNewEl("ul", null, "pagination justify-content-center", null);
 
 for (var i = 0; i < slideItem.length; i++) {
   var a = creatNewEl("a", slideItem[i], "page-link", [{"name":"href", "value":"#"}]);
