@@ -57,14 +57,15 @@ var slideItem = ["previous",1,2,3,4,5,"next"];
 var paginationBox = creatNewEl("div", null, "container", null);
 var paginationNav = creatNewEl("nav", null, "justify-content-center", [{"name":"aria-label", "value":"Page navigation example"}]);
 var ul = creatNewEl("ul", null, "pagination justify-content-center", null);
+var amountItem = creatNewEl("h2", "amount on this page: " + products.length, "justify-content-and", null);
 
 for (var i = 0; i < slideItem.length; i++) {
   var a = creatNewEl("a", slideItem[i], "page-link", [{"name":"href", "value":"#"}]);
   var li = creatNewEl("li", null, "page-item", null);
-
   li.appendChild(a);
   ul.appendChild(li);
 }
 paginationNav.appendChild(ul)
 paginationBox.appendChild(paginationNav);
+paginationBox.appendChild(amountItem);
 document.body.appendChild(paginationBox);
